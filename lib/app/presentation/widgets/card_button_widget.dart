@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CardButtonWidget extends StatelessWidget {
   const CardButtonWidget({super.key,required this.buttonColor, required this.text, required this.onTap});
@@ -19,7 +20,8 @@ class CardButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(25.0)
           )
         ),
-        child: Text(text, textAlign: TextAlign.center,style: const TextStyle(
+        child: Text(text, textAlign: TextAlign.center,
+          style: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.bold,
           color: Colors.white

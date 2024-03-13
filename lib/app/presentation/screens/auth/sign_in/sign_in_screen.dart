@@ -6,6 +6,7 @@ import 'package:budget_buddy/res/colors.dart';
 import 'package:budget_buddy/res/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -19,12 +20,13 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: darkColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text(
+        title: Text(
           'Sign In',
-          style: TextStyle(
-          fontSize: 14,
-            color: Colors.white
-        ),),
+          style: GoogleFonts.poppins(
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.bold
+          )),
         leading: IconButton(
             onPressed: () {}, 
             icon: const Icon(
@@ -68,9 +70,9 @@ class SignInScreen extends StatelessWidget {
                   color: Colors.grey,
                 ),
                 hintText: 'Please enter email here',
-                hintStyle: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey
+                hintStyle: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: Colors.grey
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -96,10 +98,10 @@ class SignInScreen extends StatelessWidget {
                   prefixIcon: const Icon(Icons.password_outlined, size: 15,color: Colors.white,),
                   suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.visibility, size: 15,)),
                   hintText: 'Please enter password here',
-                  hintStyle: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey
-                  ),
+                hintStyle: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: Colors.grey
+                ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: Colors.white),
@@ -109,33 +111,36 @@ class SignInScreen extends StatelessWidget {
             const SpaceWidget(height: 10.0,),
             TextButton(onPressed: () {
               Get.toNamed(AppPages.forgotPassword);
-            }, child: const Text('Forgot password', style: TextStyle(
+            }, child: Text('Forgot password', style: GoogleFonts.poppins(
               fontSize: 16,
-              color: Colors.red
+              color: Colors.red,
+              fontWeight: FontWeight.bold
             ),)),
             const SpaceWidget(height: 5.0,),
-            CardButtonWidget(buttonColor: Colors.red, text: 'LOGIN',onTap: () {},),
+            CardButtonWidget(buttonColor: Colors.red, text: 'LOGIN',onTap: () {
+              Get.toNamed(AppPages.home);
+            },),
             const SpaceWidget(height: 15.0,),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(child: Divider(color: Colors.white,)),
+                const Expanded(child: Divider(color: Colors.white,)),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text('or',style: TextStyle(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text('or',style: GoogleFonts.poppins(
                     color: Colors.white
                   ),),
                 ),
-                Expanded(child: Divider(color: Colors.white,))
+                const Expanded(child: Divider(color: Colors.white,))
               ],
             ),
             const SpaceWidget(height: 15.0,),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconCardButtonWidget(size: 35, image: googleIcon),
+                IconCardButtonWidget(size: 30, image: googleIcon),
                 SizedBox(width:40),
-                IconCardButtonWidget(size: 35, image: facebookIcon)
+                IconCardButtonWidget(size: 30, image: facebookIcon)
               ],
             ),
             const SpaceWidget(height: 15.0,),
@@ -145,15 +150,16 @@ class SignInScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text("Don't have an account? ",style: TextStyle(
+                Text("Don't have an account? ",style: GoogleFonts.poppins(
                   fontSize: 16,
                   color: Colors.white
                 ),),
                 TextButton(onPressed: () {
                   Get.toNamed(AppPages.signUp);
-                }, child: const Text('Sign Up', style: TextStyle(
+                }, child: Text('Sign Up', style: GoogleFonts.poppins(
                   fontSize: 16,
-                  color: Colors.red
+                  color: Colors.red,
+                    fontWeight: FontWeight.bold
                 ),))
               ],
             )
