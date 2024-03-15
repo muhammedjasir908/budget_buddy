@@ -2,7 +2,6 @@ import 'package:budget_buddy/app/presentation/route/app_pages.dart';
 import 'package:budget_buddy/app/presentation/widgets/card_button_widget.dart';
 import 'package:budget_buddy/app/presentation/widgets/space_widget.dart';
 import 'package:budget_buddy/res/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

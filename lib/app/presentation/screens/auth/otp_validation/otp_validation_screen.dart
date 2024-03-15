@@ -1,8 +1,6 @@
 import 'package:budget_buddy/app/presentation/route/app_pages.dart';
 import 'package:budget_buddy/res/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

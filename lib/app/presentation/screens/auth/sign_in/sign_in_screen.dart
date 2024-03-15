@@ -118,7 +118,7 @@ class SignInScreen extends StatelessWidget {
             ),)),
             const SpaceWidget(height: 5.0,),
             CardButtonWidget(buttonColor: Colors.red, text: 'LOGIN',onTap: () {
-              Get.toNamed(AppPages.home);
+              Get.toNamed(AppPages.main);
             },),
             const SpaceWidget(height: 15.0,),
             Row(

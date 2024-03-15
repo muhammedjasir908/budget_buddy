@@ -31,190 +31,186 @@ class HomeScreen extends StatelessWidget {
     ExpenseItem(id: 6, image: salaryIcon, title: 'Salary', date: '01-03-2024 10:00 am', amount: 5000.0,isExpense: false)
   ];
 
-    return Scaffold(
-      backgroundColor: darkColor,
-      resizeToAvoidBottomInset: true,
-      body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: SizedBox(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const CircleAvatar(
-                          backgroundImage: AssetImage(appImage),
-                          radius: 20,
-                        ),
-                        const SpaceWidget(width: 10,),
-                        Expanded(
-                          child: Text('Muhammed Jasir', style: GoogleFonts.poppins(
+    return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          child: SizedBox(
+            width: MediaQuery.sizeOf(context).width,
+            height: MediaQuery.sizeOf(context).height,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const CircleAvatar(
+                        backgroundImage: AssetImage(appImage),
+                        radius: 20,
+                      ),
+                      const SpaceWidget(width: 10,),
+                      Expanded(
+                        child: Text('Muhammed Jasir', style: GoogleFonts.poppins(
                             fontSize:14,
                             color: Colors.white
-                          ),),
-                        ),
-                        IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_outlined, size: 25,color: Colors.red,))
-                      ],
-                    ),
-                    const SpaceWidget(height: 10,),
-                    Card(
-                      color: Colors.red,
-                      elevation: 10.0,
-                      child: SizedBox(
-                        height: 100,
-                        width: MediaQuery.sizeOf(context).width,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Spent', style: GoogleFonts.poppins(
-                                fontSize:12,
-                                color:Colors.white,
-                              ),),
-                              Text('\$ 10000', style: GoogleFonts.poppins(
+                        ),),
+                      ),
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_outlined, size: 25,color: Colors.red,))
+                    ],
+                  ),
+                  const SpaceWidget(height: 10,),
+                  Card(
+                    color: Colors.red,
+                    elevation: 10.0,
+                    child: SizedBox(
+                      height: 100,
+                      width: MediaQuery.sizeOf(context).width,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Spent', style: GoogleFonts.poppins(
+                              fontSize:12,
+                              color:Colors.white,
+                            ),),
+                            Text('\$ 10000', style: GoogleFonts.poppins(
                                 fontSize:20,
                                 color:Colors.white,
                                 fontWeight: FontWeight.bold
-                              ),),
-                              Text('of \$ 20000', style: GoogleFonts.poppins(
+                            ),),
+                            Text('of \$ 20000', style: GoogleFonts.poppins(
                                 fontSize:12,
                                 color:Colors.white
-                              ),)
-                            ],
-                          ),
+                            ),)
+                          ],
                         ),
                       ),
                     ),
-                    const SpaceWidget(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Categories',
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.poppins(
-                            fontSize:16,
-                            color:Colors.white,
-                          ),),
-                        TextButton(onPressed: () {
-                          Get.toNamed(AppPages.category);
-                        }, child: Text('See all',
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.poppins(
-                            fontSize:12,
-                            color:Colors.red,
-                          ),),)
-                      ],
-                    ),
-                    const SpaceWidget(height: 10,),
-                    SizedBox(
-                      height: 250,
-                      width: MediaQuery.sizeOf(context).width,
-                      child: GridView.builder(
+                  ),
+                  const SpaceWidget(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Categories',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          fontSize:16,
+                          color:Colors.white,
+                        ),),
+                      TextButton(onPressed: () {
+                        Get.toNamed(AppPages.category);
+                      }, child: Text('See all',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          fontSize:12,
+                          color:Colors.red,
+                        ),),)
+                    ],
+                  ),
+                  const SpaceWidget(height: 10,),
+                  SizedBox(
+                    height: 250,
+                    width: MediaQuery.sizeOf(context).width,
+                    child: GridView.builder(
                         itemCount: categoryList.length,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 4,
-                              mainAxisSpacing: 5,crossAxisSpacing: 5, mainAxisExtent: 120),
-                          itemBuilder: (context,index){
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Card(
-                                  color:Colors.transparent,
-                                  child: SizedBox(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 5,crossAxisSpacing: 5, mainAxisExtent: 120),
+                        itemBuilder: (context,index){
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Card(
+                                color:Colors.transparent,
+                                child: SizedBox(
                                     width: 65,
-                                      height: 65,
-                                      child: Center(child: Image.asset(categoryList[index].categoryImage, width: 45,height: 45,))),
-                                ),
-                                Text(categoryList[index].categoryName,
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                  fontSize:10,
-                                  color:Colors.white
+                                    height: 65,
+                                    child: Center(child: Image.asset(categoryList[index].categoryImage, width: 45,height: 45,))),
+                              ),
+                              Text(categoryList[index].categoryName,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                    fontSize:10,
+                                    color:Colors.white
                                 ),)
-                              ],
-                            );
-                          }),
-                    ),
-                    const SpaceWidget(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Recent Transactions',
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.poppins(
-                            fontSize:16,
-                            color:Colors.white,
-                          ),),
-                        TextButton(onPressed: () {
-                          Get.toNamed(AppPages.transaction);
-                        }, child: Text('See all',
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.poppins(
-                            fontSize:12,
-                            color:Colors.red,
-                          ),),)
-                      ],
-                    ),
-                    const SpaceWidget(height: 10,),
-                    SizedBox(
-                      child: ListView.builder(
+                            ],
+                          );
+                        }),
+                  ),
+                  const SpaceWidget(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Recent Transactions',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          fontSize:16,
+                          color:Colors.white,
+                        ),),
+                      TextButton(onPressed: () {
+                        Get.toNamed(AppPages.transaction);
+                      }, child: Text('See all',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          fontSize:12,
+                          color:Colors.red,
+                        ),),)
+                    ],
+                  ),
+                  const SpaceWidget(height: 10,),
+                  SizedBox(
+                    child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: recentExpenseList.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index){
-                            return Card(
-                              color: darkColor,
-                              elevation: 15,
-                              child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width,
-                                height: 80,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Image.asset(recentExpenseList[index].image, width: 50,height: 50,),
-                                      const SpaceWidget(width: 10,),
-                                      Expanded(child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(recentExpenseList[index].title, style: GoogleFonts.poppins(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index){
+                          return Card(
+                            color: darkColor,
+                            elevation: 15,
+                            child: SizedBox(
+                              width: MediaQuery.sizeOf(context).width,
+                              height: 80,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Image.asset(recentExpenseList[index].image, width: 50,height: 50,),
+                                    const SpaceWidget(width: 10,),
+                                    Expanded(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(recentExpenseList[index].title, style: GoogleFonts.poppins(
                                             fontSize: 14,
                                             color:Colors.white
-                                          ),),
-                                          const SpaceWidget(height: 5,),
-                                          Text(recentExpenseList[index].date, style: GoogleFonts.poppins(
+                                        ),),
+                                        const SpaceWidget(height: 5,),
+                                        Text(recentExpenseList[index].date, style: GoogleFonts.poppins(
                                             fontSize:10,
                                             color:Colors.white
-                                          ),),
-                                        ],
-                                      )),
-                                      Text("${recentExpenseList[index].isExpense ? '-': '+'}\$ ${recentExpenseList[index].amount}",style: GoogleFonts.poppins(
+                                        ),),
+                                      ],
+                                    )),
+                                    Text("${recentExpenseList[index].isExpense ? '-': '+'}\$ ${recentExpenseList[index].amount}",style: GoogleFonts.poppins(
                                         fontSize:16,
                                         color:recentExpenseList[index].isExpense ? Colors.red : Colors.green,
                                         fontWeight: FontWeight.bold
-                                      ),)
-                                    ],
-                                  ),
+                                    ),)
+                                  ],
                                 ),
                               ),
-                            );
-                          }
-                      ),
-                    )
-                  ],
-                ),
+                            ),
+                          );
+                        }
+                    ),
+                  )
+                ],
               ),
             ),
-          )
-      ),
+          ),
+        )
     );
   }
 }

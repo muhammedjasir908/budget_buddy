@@ -4,6 +4,7 @@ class AppPages{
   static const forgotPassword = '/forgot_password';
   static const otpValidation = '/otp_validation';
   static const changePassword = '/change_password';
+  static const main = '/main';
   static const home = '/home';
   static const category = '/category';
   static const transaction = '/transaction';
