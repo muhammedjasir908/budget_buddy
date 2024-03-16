@@ -140,63 +140,63 @@ class _TransactionsScreenState extends State<TransactionsScreen> with TickerProv
             ),
           )
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: transactionList.length,
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context,index){
-                return InkWell(
-                  onTap: () {
-                    Get.toNamed(AppPages.transactionDetails);
-                  },
-                  child: Card(
-                    color: darkColor,
-                    elevation: 15,
-                    child: SizedBox(
-                      width: MediaQuery.sizeOf(context).width,
-                      height: 80,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Image.asset(transactionList[index].image, width: 50,height: 50,),
-                            const SpaceWidget(width: 10,),
-                            Expanded(child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(transactionList[index].title, style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    color:Colors.white
-                                ),),
-                                const SpaceWidget(height: 5,),
-                                Text(transactionList[index].date, style: GoogleFonts.poppins(
-                                    fontSize:10,
-                                    color:Colors.white
-                                ),),
-                              ],
-                            )),
-                            Text("${transactionList[index].isExpense ? '-': '+'}\$ ${transactionList[index].amount}",style: GoogleFonts.poppins(
-                                fontSize:16,
-                                color:transactionList[index].isExpense ? Colors.red : Colors.green,
-                                fontWeight: FontWeight.bold
-                            ),)
-                          ],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 10.0,right: 10.0,top: 10.0,bottom: 30.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: transactionList.length,
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(AppPages.transactionDetails);
+                    },
+                    child: Card(
+                      color: darkColor,
+                      elevation: 15,
+                      child: SizedBox(
+                        width: MediaQuery.sizeOf(context).width,
+                        height: 80,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Image.asset(transactionList[index].image, width: 50,height: 50,),
+                              const SpaceWidget(width: 10,),
+                              Expanded(child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(transactionList[index].title, style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      color:Colors.white
+                                  ),),
+                                  const SpaceWidget(height: 5,),
+                                  Text(transactionList[index].date, style: GoogleFonts.poppins(
+                                      fontSize:10,
+                                      color:Colors.white
+                                  ),),
+                                ],
+                              )),
+                              Text("${transactionList[index].isExpense ? '-': '+'}\$ ${transactionList[index].amount}",style: GoogleFonts.poppins(
+                                  fontSize:16,
+                                  color:transactionList[index].isExpense ? Colors.red : Colors.green,
+                                  fontWeight: FontWeight.bold
+                              ),)
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-                }
+                  );
+                  }
+              ),
             ),
-          ),
-          CardButtonWidget(buttonColor: Colors.red, text: 'Add Transaction', onTap: () {
-            Get.toNamed(AppPages.addTransaction);
-          })
-        ],
+          ],
+        ),
       ),
     );
   }

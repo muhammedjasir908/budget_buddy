@@ -10,4 +10,5 @@ class AppPages{
   static const transaction = '/transaction';
   static const transactionDetails = '/transaction_details';
   static const addTransaction = '/add_transaction';
+  static const settings = '/settings';
 }
