@@ -1,3 +1,4 @@
+import 'package:budget_buddy/app/presentation/controllers/auth/otp_validation/otp_validation_controller.dart';
 import 'package:budget_buddy/app/presentation/route/app_pages.dart';
 import 'package:budget_buddy/res/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,11 @@ import '../../../../../res/images.dart';
 import '../../../widgets/card_button_widget.dart';
 import '../../../widgets/space_widget.dart';
 
-class OTPValidationScreen extends StatelessWidget {
+class OTPValidationScreen extends GetView<OTPValidationController> {
   const OTPValidationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController otp1Controller = TextEditingController();
-    TextEditingController otp2Controller = TextEditingController();
-    TextEditingController otp3Controller = TextEditingController();
-    TextEditingController otp4Controller = TextEditingController();
     return Scaffold(
       backgroundColor: darkColor,
       resizeToAvoidBottomInset: true,
@@ -43,7 +40,7 @@ class OTPValidationScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
-                    controller: otp1Controller,
+                    controller: controller.otp1Controller,
                     keyboardType: TextInputType.number,
                     validator: (value){
                       if(value == null || value.isNotEmpty){
@@ -74,7 +71,7 @@ class OTPValidationScreen extends StatelessWidget {
                 const SpaceWidget(width: 10,),
                 Expanded(
                   child: TextFormField(
-                    controller: otp2Controller,
+                    controller: controller.otp2Controller,
                     keyboardType: TextInputType.number,
                     validator: (value){
                       if(value == null || value.isNotEmpty){
@@ -105,7 +102,7 @@ class OTPValidationScreen extends StatelessWidget {
                 const SpaceWidget(width: 10,),
                 Expanded(
                   child: TextFormField(
-                    controller: otp3Controller,
+                    controller: controller.otp3Controller,
                     keyboardType: TextInputType.number,
                     validator: (value){
                       if(value == null || value.isNotEmpty){
@@ -136,7 +133,7 @@ class OTPValidationScreen extends StatelessWidget {
                 const SpaceWidget(width: 10,),
                 Expanded(
                   child: TextFormField(
-                    controller: otp4Controller,
+                    controller: controller.otp4Controller,
                     keyboardType: TextInputType.number,
                     validator: (value){
                       if(value == null || value.isNotEmpty){

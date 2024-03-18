@@ -1,6 +1,7 @@
+import 'package:budget_buddy/app/presentation/controllers/auth/sign_in/sign_in_binding.dart';
+import 'package:budget_buddy/app/presentation/controllers/auth/sign_up/sign_up_binding.dart';
 import 'package:budget_buddy/app/presentation/controllers/main/main_binding.dart';
 import 'package:budget_buddy/app/presentation/route/app_pages.dart';
-import 'package:budget_buddy/app/presentation/screens/add_transaction/add_transaction_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/auth/change_password/change_password_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/auth/forgot_password/forgot_password_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/auth/otp_validation/otp_validation_screen.dart';
@@ -10,15 +11,17 @@ import 'package:budget_buddy/app/presentation/screens/category/category_screen.d
 import 'package:budget_buddy/app/presentation/screens/home/home_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/main/main_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/settings/settings_screen.dart';
-import 'package:budget_buddy/app/presentation/screens/transaction_details/transaction_detail_screen.dart';
-import 'package:budget_buddy/app/presentation/screens/transactions/transactions_screen.dart';
+import 'package:budget_buddy/app/presentation/screens/transactions/transaction/transactions_screen.dart';
 
 import 'package:get/get.dart';
 
+import '../screens/transactions/add_transaction/add_transaction_screen.dart';
+import '../screens/transactions/transaction_details/transaction_detail_screen.dart';
+
 class AppRoute{
   static final pages = [
-    GetPage(name: AppPages.signIn, page:() => const SignInScreen()),
-    GetPage(name: AppPages.signUp, page: () => const SignUpScreen()),
+    GetPage(name: AppPages.signIn, page:() => const SignInScreen(), binding: SignInBinding()),
+    GetPage(name: AppPages.signUp, page: () => const SignUpScreen(), binding: SignUpBinding()),
     GetPage(name: AppPages.forgotPassword, page: () => const ForgotPasswordScreen()),
     GetPage(name: AppPages.otpValidation, page: () => const OTPValidationScreen()),
     GetPage(name: AppPages.changePassword, page: () => const ChangePasswordScreen()),

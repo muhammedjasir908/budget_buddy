@@ -1,3 +1,4 @@
+import 'package:budget_buddy/app/presentation/controllers/auth/sign_up/sign_up_controller.dart';
 import 'package:budget_buddy/app/presentation/widgets/space_widget.dart';
 import 'package:budget_buddy/res/images.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,11 @@ import '../../../../../res/colors.dart';
 import '../../../widgets/card_button_widget.dart';
 import '../../../widgets/icon_card_button_widget.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends GetView<SignUpController> {
   const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: darkColor,
@@ -33,167 +30,156 @@ class SignUpScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_rounded, size: 25,color: Colors.white,)),
       ),
       body: Padding(padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Image.asset(appImage, height: 50,width: 100,),
-          const SpaceWidget(height: 10,),
-          TextFormField(
-            controller: emailController,
-            keyboardType: TextInputType.name,
-            validator: (value){
-              if(value == null || value.isNotEmpty){
-                return 'Please enter a valid username.';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
+      child: Form(
+        key: controller.formKey,
+        child: Column(
+          children: [
+            Image.asset(appImage, height: 50,width: 100,),
+            const SpaceWidget(height: 10,),
+            TextFormField(
+              controller: controller.emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (value){
+                if(value == null || value.isEmpty){
+                  return 'Please enter a valid email.';
+                }
+                return null;
+              },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  prefixIcon: const Icon(Icons.email_outlined, size: 15,color: Colors.grey,),
+                  hintText: 'Please enter email here',
+                  hintStyle:  GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.grey
+                  ),
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: Colors.white),
                 ),
-                prefixIcon: const Icon(Icons.account_circle_outlined, size: 15,color: Colors.grey,),
-                hintText: 'Please enter username here',
-                hintStyle: GoogleFonts.poppins(
-                    fontSize: 12,
-                    color: Colors.grey
-                ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: const BorderSide(color: Colors.white),
               ),
             ),
-          ),
-          const SpaceWidget(height: 10,),
-          TextFormField(
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            validator: (value){
-              if(value == null || value.isNotEmpty){
-                return 'Please enter a valid email.';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
+            const SpaceWidget(height: 10.0,),
+            TextFormField(
+              controller: controller.passwordController,
+              keyboardType: TextInputType.visiblePassword,
+              validator: (value){
+                if(value == null || value.isEmpty){
+                  return 'Please enter a valid password.';
+                }
+                return null;
+              },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  prefixIcon: const Icon(Icons.password_outlined, size: 15,color: Colors.grey,),
+                  suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.visibility, size: 15,)),
+                  hintText: 'Please enter password here',
+                  hintStyle:  GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.grey
+                  ),
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: Colors.white),
                 ),
-                prefixIcon: const Icon(Icons.email_outlined, size: 15,color: Colors.grey,),
-                hintText: 'Please enter email here',
-                hintStyle:  GoogleFonts.poppins(
-                    fontSize: 12,
-                    color: Colors.grey
-                ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: const BorderSide(color: Colors.white),
               ),
             ),
-          ),
-          const SpaceWidget(height: 10.0,),
-          TextFormField(
-            controller: passwordController,
-            keyboardType: TextInputType.visiblePassword,
-            validator: (value){
-              if(value == null || value.isNotEmpty){
-                return 'Please enter a valid password.';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
+            const SpaceWidget(height: 10.0,),
+            TextFormField(
+              controller: controller.confirmPasswordController,
+              keyboardType: TextInputType.visiblePassword,
+              validator: (value){
+                if(value == null || value.isEmpty){
+                  return 'Please enter a valid password.';
+                }
+                return null;
+              },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  prefixIcon: const Icon(Icons.password_outlined, size: 15,color: Colors.grey,),
+                  suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.visibility, size: 15,)),
+                  hintText: 'Please enter confirm password here',
+                  hintStyle:  GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.grey
+                  ),
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: Colors.white),
                 ),
-                prefixIcon: const Icon(Icons.password_outlined, size: 15,color: Colors.grey,),
-                suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.visibility, size: 15,)),
-                hintText: 'Please enter password here',
-                hintStyle:  GoogleFonts.poppins(
-                    fontSize: 12,
-                    color: Colors.grey
-                ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: const BorderSide(color: Colors.white),
               ),
             ),
-          ),
-          const SpaceWidget(height: 10.0,),
-          TextFormField(
-            controller: confirmPasswordController,
-            keyboardType: TextInputType.visiblePassword,
-            validator: (value){
-              if(value == null || value.isNotEmpty){
-                return 'Please enter a valid password.';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                  borderSide: const BorderSide(color: Colors.white),
-                ),
-                prefixIcon: const Icon(Icons.password_outlined, size: 15,color: Colors.grey,),
-                suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.visibility, size: 15,)),
-                hintText: 'Please enter confirm password here',
-                hintStyle:  GoogleFonts.poppins(
+            const SpaceWidget(height: 10.0,),
+            CardButtonWidget(buttonColor: Colors.red, text: 'SIGN UP',onTap: () async {
+              await controller.onRegisterTap();
+            },),
+            const SpaceWidget(height: 15.0,),
+             Row(
+              children: [
+                const Expanded(child: Divider(color: Colors.white,)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text('or', style: GoogleFonts.poppins(
                     fontSize: 12,
-                    color: Colors.grey
+                    color: Colors.white
+                  ),),
                 ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: const BorderSide(color: Colors.white),
-              ),
+                const Expanded(child: Divider(color: Colors.white,))
+              ],
             ),
-          ),
-          const SpaceWidget(height: 10.0,),
-          CardButtonWidget(buttonColor: Colors.red, text: 'SIGN UP',onTap: () {
-          },),
-          const SpaceWidget(height: 15.0,),
-           Row(
-            children: [
-              const Expanded(child: Divider(color: Colors.white,)),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Text('or', style: GoogleFonts.poppins(
-                  fontSize: 12,
+            const SpaceWidget(height: 15.0,),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconCardButtonWidget(size: 30, image: googleIcon),
+                SizedBox(width: 40,),
+                IconCardButtonWidget(size: 30, image: facebookIcon)
+              ],
+            ),
+            const SpaceWidget(height: 15.0,),
+            const Divider(color: Colors.white,),
+            const SpaceWidget(height: 15.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Already have an account? ",style: GoogleFonts.poppins(
+                    fontSize: 16,
                   color: Colors.white
                 ),),
-              ),
-              const Expanded(child: Divider(color: Colors.white,))
-            ],
-          ),
-          const SpaceWidget(height: 15.0,),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconCardButtonWidget(size: 30, image: googleIcon),
-              SizedBox(width: 40,),
-              IconCardButtonWidget(size: 30, image: facebookIcon)
-            ],
-          ),
-          const SpaceWidget(height: 15.0,),
-          const Divider(color: Colors.white,),
-          const SpaceWidget(height: 15.0,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("Already have an account? ",style: GoogleFonts.poppins(
-                  fontSize: 16,
-                color: Colors.white
-              ),),
-              TextButton(onPressed: () {
-                Get.back();
-              }, child:  Text('Login', style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold
-              ),))
-            ],
-          )
-        ],
+                TextButton(onPressed: () {
+                  Get.back();
+                }, child:  Text('Login', style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold
+                ),))
+              ],
+            )
+          ],
+        ),
       ),),
     );
   }

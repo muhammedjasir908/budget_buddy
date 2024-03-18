@@ -1,3 +1,4 @@
+import 'package:budget_buddy/app/presentation/controllers/auth/change_password/change_password_controller.dart';
 import 'package:budget_buddy/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,13 +9,10 @@ import '../../../route/app_pages.dart';
 import '../../../widgets/card_button_widget.dart';
 import '../../../widgets/space_widget.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
+class ChangePasswordScreen extends GetView<ChangePasswordController> {
   const ChangePasswordScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
     return Scaffold(
       backgroundColor: darkColor,
       resizeToAvoidBottomInset: true,
@@ -37,7 +35,7 @@ class ChangePasswordScreen extends StatelessWidget {
             Image.asset(appImage, height: 50,width: 100,),
             const SpaceWidget(height: 10,),
             TextFormField(
-              controller: passwordController,
+              controller: controller.passwordController,
               keyboardType: TextInputType.visiblePassword,
               validator: (value){
                 if(value == null || value.isNotEmpty){
@@ -45,6 +43,10 @@ class ChangePasswordScreen extends StatelessWidget {
                 }
                 return null;
               },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -70,7 +72,7 @@ class ChangePasswordScreen extends StatelessWidget {
             ),
             const SpaceWidget(height: 10.0,),
             TextFormField(
-              controller: confirmPasswordController,
+              controller: controller.confirmPasswordController,
               keyboardType: TextInputType.visiblePassword,
               validator: (value){
                 if(value == null || value.isNotEmpty){
@@ -78,6 +80,10 @@ class ChangePasswordScreen extends StatelessWidget {
                 }
                 return null;
               },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),

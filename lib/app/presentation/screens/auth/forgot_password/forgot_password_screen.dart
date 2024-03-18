@@ -1,3 +1,4 @@
+import 'package:budget_buddy/app/presentation/controllers/auth/forgot_password/forgot_password_controller.dart';
 import 'package:budget_buddy/app/presentation/route/app_pages.dart';
 import 'package:budget_buddy/res/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import '../../../../../res/images.dart';
 import '../../../widgets/card_button_widget.dart';
 import '../../../widgets/space_widget.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
   const ForgotPasswordScreen({super.key});
 
   @override
@@ -44,6 +45,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 }
                 return null;
               },
+              style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.white
+              ),
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),

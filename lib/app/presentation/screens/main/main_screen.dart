@@ -1,14 +1,13 @@
-import 'package:budget_buddy/app/presentation/screens/add_transaction/add_transaction_screen.dart';
-import 'package:budget_buddy/app/presentation/screens/category/category_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/home/home_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/profile/profile_screen.dart';
 import 'package:budget_buddy/app/presentation/screens/statics/statistics_screen.dart';
-import 'package:budget_buddy/app/presentation/screens/transactions/transactions_screen.dart';
+import 'package:budget_buddy/app/presentation/screens/transactions/transaction/transactions_screen.dart';
 import 'package:budget_buddy/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/main/main_controller.dart';
+import '../transactions/add_transaction/add_transaction_screen.dart';
 
 class MainScreen extends GetView<MainController> {
   const MainScreen({super.key});

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "52586748516",
+    "project_id": "budget-buddy-3ce7b",
+    "storage_bucket": "budget-buddy-3ce7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52586748516:android:f059eb3ec21fcc85fb5d71",
+        "android_client_info": {
+          "package_name": "com.muhammed_jasir.budget_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52586748516-c8ssk6evr9gp7d9k1sr8pp24i9h5megh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.muhammed_jasir.budget_buddy",
+            "certificate_hash": "0cb66218733801a102c6072d65738aa409df492b"
+          }
+        },
+        {
+          "client_id": "52586748516-tk4gdr4c294dcheo2s4p67bo49njusdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2vdq7noecF-dI7lNedCqf23MesinXjOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52586748516-tk4gdr4c294dcheo2s4p67bo49njusdj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "52586748516-os6gdo503q47dnuvplb3cscncjhi9bbs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.muhammedjasir.budgetBuddy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
