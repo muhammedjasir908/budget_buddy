@@ -12,6 +12,8 @@ class SignInController extends GetxController{
 
   final formKey = GlobalKey<FormState>();
 
+  RxBool isPasswordVisible = true.obs;
+
   Future<void> onLoginTap() async {
     final form = formKey.currentState!;
     if(form.validate()){
@@ -23,5 +25,13 @@ class SignInController extends GetxController{
         log('data - ${userData.toString()}');
       }
     }
+  }
+
+  Future<void> onGoogleTap() async {
+    await AuthRepositoryImpl().googleLogin();
+  }
+
+  Future<void> onFacebookTap() async {
+    await AuthRepositoryImpl().facebookLogin('');
   }
 }

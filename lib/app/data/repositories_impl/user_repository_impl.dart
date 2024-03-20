@@ -1,48 +1,45 @@
 import 'dart:developer';
+import 'dart:io';
+import 'dart:typed_data';
 
-import 'package:budget_buddy/app/data/exceptions/app_exception.dart';
+import 'package:budget_buddy/app/data/datasources/firestore_user_info.dart';
+import 'package:budget_buddy/app/data/models/user_personal_info.dart';
 import 'package:budget_buddy/app/domain/repositories/user_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRepositoryImpl extends UserRepository{
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   @override
-  Future<void> addUserDetails(Map<String,dynamic> userData) async {
+  Future<void> addUserDetails(UserPersonalInfo userPersonalInfo) async {
     try{
-      User? user = _auth.currentUser;
-      if(user != null){
-        await _db.collection('userDetails').doc(user.uid).set(userData);
-      }
-    }catch (e){
-      throw AppException('error', 'Error adding user data');
+      await FirestoreUserInfo.createUser(userPersonalInfo);
+    }catch(e) {
+      return Future.error(e.toString());
     }
   }
 
   @override
-  Future<void> deleteUSer() async {
+  Future<void> addUserImage({required Uint8List photo,required String userId,required String previousImageUrl}) async {
     try{
-      User? user = _auth.currentUser;
-      if(user != null){
-        await _db.collection('userDetails').doc(user.uid).delete();
-      }
-    }catch (e){
-      throw AppException('error', 'Error adding user data');
+      String imageUrl = await Fir
+    }catch(e){
+      return Future.error(e.toString());
     }
   }
 
   @override
-  Future<void> getUserDetails() async {
+  Future<void> deleteUSer(String uid) {
+    // TODO: implement deleteUSer
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserPersonalInfo> getUserDetails(String userId) async {
     try{
-      User? user = _auth.currentUser;
-      if(user != null){
-        var data = await _db.collection('userDetails').doc(user.uid).get();
-        log('user data - ${data.data()}');
-      }
-    }catch (e){
-      throw AppException('error', 'Error adding user data');
+      UserPersonalInfo userPersonalInfo = await FirestoreUserInfo.getUserInfo(userId);
+      return userPersonalInfo;
+    }catch(e){
+      return Future.error(e.toString());
     }
   }
 

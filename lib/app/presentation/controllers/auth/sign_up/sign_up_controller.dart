@@ -20,11 +20,20 @@ class SignUpController extends GetxController{
       User? userData = await AuthRepositoryImpl()
           .signUpWithEmail(
           emailController.text.trim(),
-          passwordController.text.trim(), passwordController.text.trim());
+          passwordController.text.trim(),
+          confirmPasswordController.text.trim());
       if(userData != null){
         log('data - ${userData.toString()}');
       }
     }
+  }
+
+  Future<void> onGoogleTap() async {
+    await AuthRepositoryImpl().googleLogin();
+  }
+
+  Future<void> onFacebookTap() async {
+    await AuthRepositoryImpl().facebookLogin('');
   }
 
 }
