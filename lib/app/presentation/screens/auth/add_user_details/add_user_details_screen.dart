@@ -174,6 +174,7 @@ class AddUserDetailsScreen extends GetView<AddUserDetailsController> {
             ),
             const SpaceWidget(height: 20,),
             CardButtonWidget(
+              isLoading: false,
               buttonColor: Colors.red,
               text: 'Save',
               onTap: () async {

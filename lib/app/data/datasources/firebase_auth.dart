@@ -21,13 +21,13 @@ class FirebaseAuthentication {
     return user;
   }
 
-  static Future forgotPassword(
+  static Future resetPassword(
           {required String email, required String password}) async =>
       await _firebaseAuth.sendPasswordResetEmail(email: email);
 
   static Future changePassword(
           {required String email, required String password}) async =>
-      await _firebaseAuth.confirmPasswordReset(code: '', newPassword: password);
+      await _firebaseAuth.currentUser?.updatePassword(password);
 
   static Future signOut() async => await _firebaseAuth.signOut();
 

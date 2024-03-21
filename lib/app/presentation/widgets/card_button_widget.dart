@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardButtonWidget extends StatelessWidget {
-  const CardButtonWidget({super.key,required this.buttonColor, required this.text, required this.onTap});
+  const CardButtonWidget({super.key,required this.buttonColor,required this.isLoading, required this.text, required this.onTap});
 
   final String text;
   final Color buttonColor;
-
+  final bool isLoading;
   final VoidCallback onTap;
 
   @override
@@ -20,7 +20,16 @@ class CardButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(25.0)
           )
         ),
-        child: Text(text, textAlign: TextAlign.center,
+        child: isLoading
+            ? const SizedBox(
+            width:20,
+            height:20,
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ))
+            : Text(
+          text,
+          textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.bold,

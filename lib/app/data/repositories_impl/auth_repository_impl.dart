@@ -39,16 +39,16 @@ class AuthRepositoryImpl extends AuthRepository{
   @override
   Future<void> changePassword(RegisteredUser userInfo) async {
     try{
-      await FirebaseAuthentication.forgotPassword(email: userInfo.email, password: userInfo.password);
+      await FirebaseAuthentication.changePassword(email: userInfo.email, password: userInfo.password);
     }catch (e) {
       return Future.error(e.toString());
     }
   }
 
   @override
-  Future<void> forgotPassword(RegisteredUser userInfo) async {
+  Future<void> resetPassword(RegisteredUser userInfo) async {
     try{
-      await FirebaseAuthentication.changePassword(email: userInfo.email, password: userInfo.password);
+      await FirebaseAuthentication.resetPassword(email: userInfo.email, password: userInfo.password);
     }catch (e){
       return Future.error(e.toString());
     }

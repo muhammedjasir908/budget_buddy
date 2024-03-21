@@ -10,9 +10,7 @@ abstract class AuthRepository{
 
   Future<void> googleLogin();
 
-  Future<void> facebookLogin(String token);
-
-  Future<void> forgotPassword(RegisteredUser userInfo);
+  Future<void> resetPassword(RegisteredUser userInfo);
 
   Future<void> changePassword(RegisteredUser userInfo);
 

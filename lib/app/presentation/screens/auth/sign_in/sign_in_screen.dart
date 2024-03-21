@@ -138,10 +138,13 @@ class SignInScreen extends GetView<SignInController> {
               const SpaceWidget(
                 height: 5.0,
               ),
-              CardButtonWidget(
-                buttonColor: Colors.red,
-                text: 'LOGIN',
-                onTap: () async => await controller.onLoginTap(),
+              Obx(
+                () => CardButtonWidget(
+                  isLoading: controller.isLoading.value,
+                  buttonColor: Colors.red,
+                  text: 'LOGIN',
+                  onTap: () async => await controller.onLoginTap(),
+                ),
               ),
               const SpaceWidget(
                 height: 15.0,

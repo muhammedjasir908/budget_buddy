@@ -26,8 +26,10 @@ dependencies:
   google_sign_in: ^6.2.1
   cloud_firestore: ^4.15.9
   firebase_storage: ^11.6.10
-  image_picker: ^1.0.7
   equatable: ^2.0.5
+  path: ^1.9.0
+  image_picker_plus: ^0.5.9
+  flutter_image_compress: ^2.2.0
 
 dev_dependencies:
   flutter_test:

@@ -149,7 +149,7 @@ class TransactionDetailScreen extends StatelessWidget {
               ],
             ),
             const SpaceWidget(height: 10,),
-            CardButtonWidget(buttonColor: Colors.red, text: 'Download Receipt', onTap: () {})
+            CardButtonWidget(isLoading: false,buttonColor: Colors.red, text: 'Download Receipt', onTap: () {})
           ],
         ),
       )

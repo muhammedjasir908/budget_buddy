@@ -1,11 +1,9 @@
-import 'dart:developer';
-import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:budget_buddy/app/data/datasources/firebase_storage.dart';
 import 'package:budget_buddy/app/data/datasources/firestore_user_info.dart';
 import 'package:budget_buddy/app/data/models/user_personal_info.dart';
 import 'package:budget_buddy/app/domain/repositories/user_repository.dart';
-import 'package:image_picker/image_picker.dart';
 
 class UserRepositoryImpl extends UserRepository{
 
@@ -19,18 +17,27 @@ class UserRepositoryImpl extends UserRepository{
   }
 
   @override
-  Future<void> addUserImage({required Uint8List photo,required String userId,required String previousImageUrl}) async {
+  Future<String> uploadProfileImage({required Uint8List photo,required String userId,required String previousImageUrl}) async {
     try{
-      String imageUrl = await Fir
+      String imageUrl = await FirebaseStorageImage.uploadData(
+          folderName: 'userImage',
+          data: photo
+      );
+      await FirestoreUserInfo.updateProfileImage(imageUrl: imageUrl, userId: userId);
+      await FirebaseStorageImage.deleteImageFromStorage(previousImageUrl);
+      return imageUrl;
     }catch(e){
       return Future.error(e.toString());
     }
   }
 
   @override
-  Future<void> deleteUSer(String uid) {
-    // TODO: implement deleteUSer
-    throw UnimplementedError();
+  Future<void> deleteUSer(String uid) async {
+    try{
+      await FirestoreUserInfo.deleteUserInfo(uid);
+    }catch(e){
+      return Future.error(e.toString());
+    }
   }
 
   @override

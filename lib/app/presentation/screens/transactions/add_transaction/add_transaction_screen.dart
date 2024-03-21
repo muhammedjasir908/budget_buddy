@@ -204,7 +204,9 @@ class AddTransactionScreen extends StatelessWidget {
                   selectedMode = newValue;
                 }),
             const SpaceWidget(height: 10,),
-            CardButtonWidget(buttonColor: Colors.red, text: 'Add', onTap: () {}),
+            CardButtonWidget(
+              isLoading: false,
+                buttonColor: Colors.red, text: 'Add', onTap: () {}),
             const SpaceWidget(height: 10,)
           ],
         ),

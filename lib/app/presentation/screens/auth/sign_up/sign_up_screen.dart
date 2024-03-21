@@ -89,6 +89,8 @@ class SignUpScreen extends GetView<SignUpController> {
                   return null;
                 },
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
+                obscuringCharacter: '*',
+                obscureText: controller.isPasswordVisible.value,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -100,7 +102,10 @@ class SignUpScreen extends GetView<SignUpController> {
                     color: Colors.grey,
                   ),
                   suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.isPasswordVisible.value =
+                            !controller.isPasswordVisible.value;
+                      },
                       icon: const Icon(
                         Icons.visibility,
                         size: 15,
@@ -123,12 +128,14 @@ class SignUpScreen extends GetView<SignUpController> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a valid password.';
-                  } else if(value != controller.passwordController.text){
+                  } else if (value != controller.passwordController.text) {
                     return 'Please enter above entered password.';
                   }
                   return null;
                 },
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
+                obscuringCharacter: '*',
+                obscureText: controller.isConfirmPasswordVisible.value,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -140,7 +147,10 @@ class SignUpScreen extends GetView<SignUpController> {
                     color: Colors.grey,
                   ),
                   suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.isConfirmPasswordVisible.value =
+                            !controller.isConfirmPasswordVisible.value;
+                      },
                       icon: const Icon(
                         Icons.visibility,
                         size: 15,
@@ -158,12 +168,11 @@ class SignUpScreen extends GetView<SignUpController> {
                 height: 10.0,
               ),
               CardButtonWidget(
+                isLoading: false,
                 buttonColor: Colors.red,
                 text: 'SIGN UP',
-                onTap: () async {
-                  await Get.toNamed(AppPages.addAccountDetails);
-                  // await controller.onRegisterTap();
-                },
+                onTap: () async =>
+                  await controller.onRegisterTap(),
               ),
               const SpaceWidget(
                 height: 15.0,
@@ -196,10 +205,6 @@ class SignUpScreen extends GetView<SignUpController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconCardButtonWidget(size: 30, image: googleIcon),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  IconCardButtonWidget(size: 30, image: facebookIcon)
                 ],
               ),
               const SpaceWidget(

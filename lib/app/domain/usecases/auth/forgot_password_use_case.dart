@@ -10,7 +10,7 @@ class ForgotPasswordAuthUseCase implements UseCase<void,RegisteredUser>{
 
   @override
   Future<void> call({required RegisteredUser params}) {
-    return authRepository.forgotPassword(params);
+    return authRepository.resetPassword(params);
   }
 
 }
